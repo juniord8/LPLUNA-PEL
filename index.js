@@ -9,6 +9,10 @@ function enviarWhatsApp(e){
   const mensagem = `Olá, sou ${nome}. Gostaria de agendar uma avaliação (PELOTAS) para ${servico}. Melhor dia/horário: ${quando}.`;
   const url = `https://wa.me/${WHATSAPP_PELOTAS}?text=${encodeURIComponent(mensagem)}`;
 
+  if (typeof fbq === "function") {
+    fbq("track", "Lead");
+  }
+
   window.open(url, '_blank');
   return false;
 }
